@@ -1,5 +1,5 @@
 const express = require('express');
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core'); // Change to puppeteer-core
 const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,6 +13,7 @@ app.get('/scrape', async (req, res) => {
     const browser = await puppeteer.launch({
       headless: true,
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      executablePath: puppeteer.executablePath() // Ensure using the bundled Chromium
     });
     const page = await browser.newPage();
     await page.goto('https://aastey.com/collections/newarrivals', { waitUntil: 'networkidle2' });
