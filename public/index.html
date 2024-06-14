@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Table</title>
+    <style>
+        /* Add some basic styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Spinner styles */
+        .spinner {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #3498db;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+            margin: 100px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Blinking dots styles */
+        .loading-text {
+            text-align: center;
+            font-size: 5em;
+            font-weight: bolder;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .dots::after {
+            content: '...';
+            animation: blink 1s steps(3, end) infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                color: rgba(52, 152, 219, 1);
+            }
+            50% {
+                color: rgb(243, 243, 243);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="spinner" id="spinner"></div>
+    <div class="loading-text" id="loading-text">Please wait. Fetching data<span class="dots"></span></div>
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Color</th>
+                <th>Regular Price</th>
+                <th>Sale Price</th>
+            </tr>
+        </thead>
+        <tbody id="products-table-body">
+            <!-- Data will be inserted here -->
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
